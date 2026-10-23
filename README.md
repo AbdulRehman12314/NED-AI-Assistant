@@ -63,16 +63,3 @@ OPENAI_API_KEY=your_api_key_here
 ```bash
 streamlit run app.py
 ```
-
----
-
-## 🌐 Deployment
-
-This application is designed to be hosted for free on **Streamlit Community Cloud** or **Hugging Face Spaces**. 
-
-### Deploying to Streamlit Community Cloud
-1. Navigate to [share.streamlit.io](https://streamlit.io).
-2. Connect your GitHub account and point to this repository (`AbdulRehman12314/NED-AI-Assistant`).
-3. Set the **Main file path** to `app.py`.
-4. Paste the content of your local `.env` configuration file into **Advanced Settings -> Secrets** in TOML format.
-5. Click **Deploy**!
