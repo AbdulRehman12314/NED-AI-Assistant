@@ -1,0 +1,7 @@
+experiment,chunk_size,overlap,k,question,expected_source_files,retrieved_source_files,required_evidence_retrieved,irrelevant_evidence_retrieved_review,final_answer_correct_review
+baseline,850,120,1,What is the non-refundable registration fee for UGD?,NED_Academy_GPT_Master_Knowledge_v1.2.1.pdf,NED_Academy_GPT_Master_Knowledge_v1.2.1.pdf,True,None,Correct: Rs.5,000
+baseline,850,120,3,What is the non-refundable registration fee for UGD?,NED_Academy_GPT_Master_Knowledge_v1.2.1.pdf,NED_Academy_GPT_Master_Knowledge_v1.2.1.pdf,True,None,Correct: Rs.5,000
+baseline,850,120,5,What is the non-refundable registration fee for UGD?,NED_Academy_GPT_Master_Knowledge_v1.2.1.pdf,NED_Academy_GPT_Master_Knowledge_v1.2.1.pdf,True,Minor general intro chunk,Correct: Rs.5,000
+baseline,850,120,1,What are the office hours for student support?,NED_Academy_GPT_Master_Knowledge_v1.2.1.pdf,NED_Academy_GPT_Master_Knowledge_v1.2.1.pdf,True,None,Correct: Mon-Fri 8:30 AM - 4:30 PM
+baseline,850,120,3,What are the office hours for student support?,NED_Academy_GPT_Master_Knowledge_v1.2.1.pdf,NED_Academy_GPT_Master_Knowledge_v1.2.1.pdf,True,None,Correct: Mon-Fri 8:30 AM - 4:30 PM
+baseline,850,120,5,What are the office hours for student support?,NED_Academy_GPT_Master_Knowledge_v1.2.1.pdf,NED_Academy_GPT_Master_Knowledge_v1.2.1.pdf,True,Adjacent contact chunk,Correct: Mon-Fri 8:30 AM - 4:30 PM

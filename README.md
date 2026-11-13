@@ -1,65 +1,46 @@
-# 🤖 NED-AI-Assistant
+# 🎓 NED Academy Digital Assistant
 
-An AI-powered assistant built with **Streamlit** designed to streamline information retrieval, admissions guidance, and assistant workflows for **NED University**. This project utilizes an embedded knowledge base coupled with vector searches to deliver highly accurate answers.
+An enterprise-grade Advanced RAG (Retrieval-Augmented Generation) assistant built for **NED Academy** (the Training & Professional Development Wing of NED University of Engineering & Technology, Karachi)[cite: 27]. 
 
----
-
-## 🚀 Features
-* **Intelligent Query Resolution:** Answers admission, department, and general administrative questions dynamically.
-* **Vector Search Database:** Integrated ChromaDB infrastructure (`ned_admissions_db`) for fast and reliable context retrieval.
-* **Clean UI/UX:** Interactive chat interface powered seamlessly by Streamlit.
-* **Secure Configurations:** Environment management using `.env` handling for API integrations.
+This application provides reliable, evidence-backed answers to student and public inquiries regarding admissions, course fees, UGD/PGD programmes, facilities, attendance policies, and contact channels, while strictly avoiding hallucinations and handling prompt injections[cite: 27, 39, 40, 41].
 
 ---
 
-## 📁 Repository Structure
+## 🚀 Key Features
+- **Advanced RAG Pipeline (Module 09):**
+  - **Query Rewriting:** Expands colloquial Roman Urdu and shorthand terms into formal English search queries.
+  - **Hybrid Search:** Combines dense vector semantic search (SentenceTransformers) with sparse keyword matching (BM25Okapi).
+  - **Reciprocal Rank Fusion (RRF):** Merges semantic and keyword rankings robustly.
+  - **Cross-Encoder Reranking:** Re-scores retrieved candidates using `ms-marco-MiniLM-L-6-v2` for high precision.
+  - **Multi-Document Fusion:** Splits compound questions to search across multiple knowledge files.
+  - **Long-Context Neighbour Expansion:** Automatically includes adjacent text chunks to prevent rule fragmentation.
+- **Strict Evidence Guardrails:** Answers exclusively from uploaded documents, citing source files and excerpts, and outputs exact fallback messages (`INSUFFICIENT`) when evidence is missing[cite: 27, 38].
+- **Professional UI:** Styled with a clean White & Red professional theme supporting a Light/Dark Mode toggle.
+- **Local SQLite Vector Database:** Zero external paid vector databases required; runs entirely locally using SQLite and Python.
+
+---
+---
+
+## 🎥 Demonstration Video
+You can watch the complete 3-5 minute demo video covering all required test scenarios (factual lookups, multi-doc fusion, policy comparison, missing info, and prompt-injection resistance) here:
+👉 **[Watch NED Academy Assistant Demo Video](https://drive.google.com/file/d/1_rCZ_jiSnT_EeSRklDB1QckSxaZvnh-J/view?usp=sharing)**
+
+## 📂 Project Structure
 ```text
-NED-Ai-assistant/
-├── ned_admissions_db/       # ChromaDB vector database directory
-├── app.py                  # Primary Streamlit execution entry point
-├── NED_Ai_Assistant.ipynb  # Development notebook / experimentation pipelines
-├── requirements.txt        # Managed project package dependencies
-└── README.md               # Project documentation
-```
-
----
-
-## 🛠️ Local Setup Instructions
-
-Follow these steps to run the Streamlit application on your local machine:
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com
-cd NED-AI-Assistant
-```
-
-### 2. Configure a Virtual Environment
-Create and activate a virtual environment to manage dependencies locally:
-```bash
-# For Windows
-python -m venv venv
-.\venv\Scripts\activate
-
-# For macOS/Linux
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### 3. Install Dependencies
-Ensure all application requirements are configured correctly:
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Setup Environment Variables
-Create a `.env` file in the root directory and append your required secrets/credentials:
-```text
-OPENAI_API_KEY=your_api_key_here
-# Add other necessary database or API environment variables below
-```
-
-### 5. Launch the Streamlit Application
-```bash
-streamlit run app.py
-```
+NED/
+├── knowledge_base/               # Official PDF, CSV, and Excel knowledge documents
+│   ├── NED_Academy_GPT_Master_Knowledge_v1.2.1.pdf
+│   ├── NED_Academy_FAQ_Master_v1.2.csv
+│   └── NED_Academy_Source_Index_and_Update_Log_v1.0.xlsx
+├── reports/                      # Evaluation and test results
+│   ├── test_results.csv          # 20-question comprehensive test suite
+│   └── retrieval_experiments.csv # k=1,3,5 retrieval ablation logs
+├── .env                          # Environment variables (Groq API key)
+├── .env.example                  # Template for environment variables
+├── .gitignore                    # Git exclusion rules
+├── README.md                     # Project documentation
+├── requirements.txt              # Python package dependencies
+├── config.py                     # Centralized configuration
+├── rag_engine.py                 # Advanced RAG pipeline logic
+├── build_index.py                # Script to build/rebuild SQLite vector index
+└── app.py                        # Streamlit web application frontend

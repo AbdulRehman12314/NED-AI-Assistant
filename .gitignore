@@ -1,4 +1,10 @@
-venv/
-.env
 __pycache__/
-*.pyc
+*.py[cod]
+.env
+.venv/
+venv/
+.chroma/
+chroma_db/
+vector_index.sqlite3
+.streamlit/secrets.toml
+.DS_Store
